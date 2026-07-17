@@ -66,11 +66,13 @@ m = folium.Map(
 )
 
 folium.GeoJson(
+    folium.GeoJson(
     york_boundary,
     style_function=lambda x: {
         "fillOpacity": 0,
-        "color": "black",
-        "weight": 4
+        "color": "#555555",
+        "weight": 2,
+        "dashArray": "8, 8"
     }
 ).add_to(m)
 
