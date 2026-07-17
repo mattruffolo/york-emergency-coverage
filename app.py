@@ -3,6 +3,7 @@ import pandas as pd
 import geopandas as gpd
 import folium
 from streamlit_folium import st_folium
+from folium.plugins import Fullscreen
 
 st.set_page_config(page_title="York Region Police Coverage", layout="wide")
 
@@ -61,6 +62,7 @@ m = folium.Map(
     zoom_start=9,
     tiles="CartoDB positron"
 )
+Fullscreen().add_to(m)
 
 folium.GeoJson(
     york_boundary,
