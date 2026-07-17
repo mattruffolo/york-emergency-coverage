@@ -99,7 +99,7 @@ for _, row in stations.iterrows():
         ),
         icon=folium.Icon(
             color="darkblue",
-            icon="building"
+            icon="home"
         )
     ).add_to(m)
 legend_html = """
@@ -107,7 +107,7 @@ legend_html = """
 position: fixed;
 bottom: 50px;
 left: 50px;
-width: 150px;
+width: 160px;
 background-color: white;
 border: 2px solid grey;
 z-index:9999;
