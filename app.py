@@ -25,6 +25,10 @@ c1.metric("Within 5 min", f"{pop_5:,}", f"{pop_5/total_pop*100:.1f}%")
 c2.metric("Within 10 min", f"{pop_10:,}", f"{pop_10/total_pop*100:.1f}%")
 c3.metric("Within 15 min", f"{pop_15:,}", f"{pop_15/total_pop*100:.1f}%")
 c4.metric("Outside Coverage", f"{pop_gap:,}", f"{pop_gap/total_pop*100:.1f}%")
+st.info(
+    f"Approximately {pop_gap/total_pop*100:.1f}% of York Region residents "
+    f"({pop_gap:,} people) live outside a 15‑minute drive of a district police station."
+)
 
 st.subheader("Coverage Map")
 m = folium.Map(
