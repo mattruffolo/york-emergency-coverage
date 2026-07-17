@@ -42,7 +42,7 @@ c3.markdown(f"""
 """, unsafe_allow_html=True)
 
 c4.markdown(f"""
-### Byond 15 Minutes
+### Beyond 15 Minutes
 # {pop_gap:,}
 <span style='color:green'>{pop_gap/total_pop*100:.1f}% of population</span>
 """, unsafe_allow_html=True)
