@@ -29,6 +29,11 @@ c4.metric("Outside Coverage", f"{pop_gap:,}")
 
 st.subheader("Coverage Map")
 m = folium.Map(
+    location=[44.05, -79.45],
+    zoom_start=9,
+    tiles="CartoDB positron"
+)
+
 coverage_colors = {
     5: "#2ecc71",
     10: "#f1c40f",
