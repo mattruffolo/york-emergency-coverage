@@ -91,15 +91,16 @@ for _, row in isochrones.iterrows():
     ).add_to(m)
 
 for _, row in stations.iterrows():
-    folium.Marker(
-        [row.geometry.y, row.geometry.x],
+    folium.CircleMarker(
+        location=[row.geometry.y, row.geometry.x],
+        radius=8,
+        color="#0b2e6d",
+        fill=True,
+        fill_color="#0b2e6d",
+        fill_opacity=1,
         popup=folium.Popup(
             f"<b>{row['NAME']}</b><br>{row['ADDRESS']}",
             max_width=300
-        ),
-        icon=folium.Icon(
-            color="darkblue",
-            icon="home"
         )
     ).add_to(m)
 legend_html = """
@@ -107,7 +108,7 @@ legend_html = """
 position: fixed;
 bottom: 50px;
 left: 50px;
-width: 160px;
+width: 170px;
 background-color: white;
 border: 2px solid grey;
 z-index:9999;
