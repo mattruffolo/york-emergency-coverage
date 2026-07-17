@@ -10,19 +10,6 @@ stations = gpd.read_file("PoliceStation.geojson").to_crs(epsg=4326)
 isochrones = gpd.read_file("isochrones.geojson").to_crs(epsg=4326)
 summary = pd.read_csv("coverage_summary.csv")
 york_boundary = gpd.read_file("YorkRegionBoundary.geojson").to_crs(epsg=4326)
-m = folium.Map(
-    location=[44.05, -79.45],
-    zoom_start=9,
-    tiles="CartoDB positron"
-)
-folium.GeoJson(
-    york_boundary,
-    style_function=lambda x: {
-        "fillOpacity": 0,
-        "color": "black",
-        "weight": 4
-    }
-).add_to(m)
 
 st.title("York Region Police Response Coverage")
 st.markdown("Open-data analysis of drive-time coverage from YRP district stations.")
@@ -71,11 +58,21 @@ st.info(
     f"Approximately {pop_gap:,} residents ({pop_gap/total_pop*100:.1f}% of York Region's population) live outside a 15-minute drive of a York Regional Police district station."
 )
 st.subheader("Coverage Map")
+
 m = folium.Map(
     location=[44.05, -79.45],
     zoom_start=9,
     tiles="CartoDB positron"
 )
+
+folium.GeoJson(
+    york_boundary,
+    style_function=lambda x: {
+        "fillOpacity": 0,
+        "color": "black",
+        "weight": 4
+    }
+).add_to(m)
 
 colors = {
     5: "#2ecc71",
