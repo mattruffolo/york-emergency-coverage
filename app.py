@@ -9,7 +9,7 @@ st.set_page_config(page_title="York Region Police Coverage", layout="wide")
 stations = gpd.read_file("PoliceStation.geojson").to_crs(epsg=4326)
 isochrones = gpd.read_file("isochrones.geojson").to_crs(epsg=4326)
 summary = pd.read_csv("coverage_summary.csv")
-da_coverage = gpd.read_file("Da_Coverage.json").to_crs(epsg=4326)
+da_coverage = gpd.read_file("da_coverage.geojson").to_crs(epsg=4326)
 
 
 st.title("York Region Police Response Coverage")
