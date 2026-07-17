@@ -21,10 +21,10 @@ pop_15 = int(summary.loc[summary["minutes"] == 15, "Population.sum"].values[0])
 pop_gap = int(summary.loc[summary["minutes"] == 999, "Population.sum"].values[0])
 
 c1, c2, c3, c4 = st.columns(4)
-c1.metric("Within 5 min", f"{pop_5:,}")
-c2.metric("Within 10 min", f"{pop_10:,}")
-c3.metric("Within 15 min", f"{pop_15:,}")
-c4.metric("Outside Coverage", f"{pop_gap:,}")
+c1.metric("Within 5 min", f"{pop_5:,}", f"{pop_5/total_pop*100:.1f}%")
+c2.metric("Within 10 min", f"{pop_10:,}", f"{pop_10/total_pop*100:.1f}%")
+c3.metric("Within 15 min", f"{pop_15:,}", f"{pop_15/total_pop*100:.1f}%")
+c4.metric("Outside Coverage", f"{pop_gap:,}", f"{pop_gap/total_pop*100:.1f}%")
 
 st.subheader("Coverage Map")
 m = folium.Map(
