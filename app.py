@@ -62,17 +62,17 @@ colors = {
     15: "#e74c3c"
 }
 for _, row in isochrones.iterrows():
- if coverage_filter == "All":
-    filtered_isochrones = isochrones
+    c = colors.get(row["minutes"], "gray")
 
-elif coverage_filter == "5 Minute":
-    filtered_isochrones = isochrones[isochrones["minutes"] == 5]
-
-elif coverage_filter == "10 Minute":
-    filtered_isochrones = isochrones[isochrones["minutes"] == 10]
-
-elif coverage_filter == "15 Minute":
-    filtered_isochrones = isochrones[isochrones["minutes"] == 15]
+    folium.GeoJson(
+        row.geometry,
+        style_function=lambda x, c=c: {
+            "fillColor": c,
+            "color": c,
+            "weight": 1,
+            "fillOpacity": 0.15
+        }
+    ).add_to(m)
 
 for _, row in filtered_isochrones.iterrows():
     c = colors.get(row["minutes"], "gray")
