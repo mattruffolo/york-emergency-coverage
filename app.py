@@ -77,7 +77,7 @@ folium.GeoJson(
         "weight": 2,
         "dashArray": "8,8"
     }
-).add_to(m)
+).add_to(boundary_layer)
 
 colors = {
     5: "#2ecc71",
