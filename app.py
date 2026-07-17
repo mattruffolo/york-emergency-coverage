@@ -72,8 +72,7 @@ folium.GeoJson(
         "color": "#777777",
         "weight": 2,
         "dashArray": "8,8"
-    },
-    tooltip="York Region Boundary"
+    }
 ).add_to(m)
 
 colors = {
