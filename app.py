@@ -155,12 +155,12 @@ color:black;
 <span style="color:#e74c3c;">■</span> 15 Minute Drive Time
 </div>
 """
-boundary_layer.add_to(m)
+
+stations_layer.add_to(m)
 iso_5_layer.add_to(m)
 iso_10_layer.add_to(m)
 iso_15_layer.add_to(m)
-
-stations_layer.add_to(m)
+boundary_layer.add_to(m)
 
 folium.LayerControl().add_to(m)
 
