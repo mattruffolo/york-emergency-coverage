@@ -92,7 +92,7 @@ for _, row in isochrones.iterrows():
 
 for _, row in stations.iterrows():
     police_icon = folium.CustomIcon(
-        "police_station_icon.png",
+        "police-station.png",
         icon_size=(28, 28)
     )
 
