@@ -141,7 +141,7 @@ legend_html = """
 position: fixed;
 bottom: 30px;
 left: 30px;
-width: 260px;
+width: 220px;
 background-color: white;
 border: 2px solid grey;
 z-index:9999;
@@ -152,9 +152,8 @@ color:black;
 
 <b>Legend</b><br><br>
 
- ⛊✪ Police Station
+<span style="font-size:16px;">⛊✪</span> Police Station<br>
 
- 
 <span style="color:#2ecc71;">■</span> 5 Minute Drive Time<br>
 <span style="color:#f1c40f;">■</span> 10 Minute Drive Time<br>
 <span style="color:#e74c3c;">■</span> 15 Minute Drive Time<br><br>
