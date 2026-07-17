@@ -130,8 +130,6 @@ st.info(
     f"In contrast, {pop_gap:,} residents ({pop_gap/total_pop*100:.1f}%) live outside 15-minute coverage."
 )
 
-st.subheader("Population by Coverage Bucket")
-
 chart_data = summary.copy()
 chart_data["minutes"] = chart_data["minutes"].astype(int)
 
