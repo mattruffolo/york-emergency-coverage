@@ -25,13 +25,11 @@ c1.metric("5 Minute Coverage", f"{pop_5:,}")
 c2.metric("10 Minute Coverage", f"{pop_10:,}")
 c3.metric("15 Minute Coverage", f"{pop_15:,}")
 c4.metric("Outside Coverage", f"{pop_gap:,}")
-st.markdown(
-    f"""
-    **5 min:** {pop_5/total_pop*100:.1f}% &nbsp;&nbsp;|&nbsp;&nbsp;
-    **10 min:** {pop_10/total_pop*100:.1f}% &nbsp;&nbsp;|&nbsp;&nbsp;
-    **15 min:** {pop_15/total_pop*100:.1f}% &nbsp;&nbsp;|&nbsp;&nbsp;
-    **Outside:** {pop_gap/total_pop*100:.1f}%
-    """
+st.write(
+    f"5 min: {pop_5/total_pop*100:.1f}% | "
+    f"10 min: {pop_10/total_pop*100:.1f}% | "
+    f"15 min: {pop_15/total_pop*100:.1f}% | "
+    f"Outside: {pop_gap/total_pop*100:.1f}%"
 )
 
 st.subheader("Coverage Map")
