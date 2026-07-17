@@ -42,7 +42,7 @@ c3.markdown(f"""
 """, unsafe_allow_html=True)
 
 c4.markdown(f"""
-### Outside Coverage
+### Byond 15 Minutes
 # {pop_gap:,}
 <span style='color:green'>{pop_gap/total_pop*100:.1f}% of population</span>
 """, unsafe_allow_html=True)
@@ -169,7 +169,7 @@ st_folium(m, width=1200, height=500)
 
 st.info(
     f"{covered_pop:,} residents ({coverage_rate:.1f}%) live within a 15-minute drive of a York Regional Police district station. "
-    f"In contrast, {pop_gap:,} residents ({pop_gap/total_pop*100:.1f}%) live outside 15-minute coverage."
+    f"In contrast, {pop_gap:,} residents ({pop_gap/total_pop*100:.1f}%) live beyond 15 minutes."
 )
 
 chart_data = summary.copy()
@@ -179,7 +179,7 @@ chart_data["Label"] = chart_data["minutes"].map({
 5: "5 min",
 10: "10 min",
 15: "15 min",
-999: "Outside Coverage"
+999: "Beyond 15 Minutes"
 })
 
 st.bar_chart(chart_data.set_index("Label")["Population.sum"])
