@@ -54,10 +54,6 @@ c6.metric("Covered Population", f"{covered_pop:,}")
 c7.metric("Coverage Rate", f"{coverage_rate:.1f}%")
 c8.metric("Police Stations", f"{len(stations)}")
 
-st.info(
-    f"{covered_pop:,} residents ({coverage_rate:.1f}%) live within a 15-minute drive of a York Regional Police district station. "
-    f"In contrast, {pop_gap:,} residents ({pop_gap/total_pop*100:.1f}%) live outside 15-minute coverage."
-)
 st.subheader("Coverage Map")
 
 m = folium.Map(
@@ -128,6 +124,11 @@ color:black;
 
 m.get_root().html.add_child(folium.Element(legend_html))
 st_folium(m, width=1200, height=500)
+
+st.info(
+    f"{covered_pop:,} residents ({coverage_rate:.1f}%) live within a 15-minute drive of a York Regional Police district station. "
+    f"In contrast, {pop_gap:,} residents ({pop_gap/total_pop*100:.1f}%) live outside 15-minute coverage."
+)
 
 st.subheader("Population by Coverage Bucket")
 
