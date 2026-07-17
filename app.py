@@ -66,7 +66,9 @@ m = folium.Map(
 Fullscreen().add_to(m)
 
 stations_layer = FeatureGroup(name="Police Stations")
-isochrones_layer = FeatureGroup(name="Drive Time Isochrones")
+iso_5_layer = FeatureGroup(name="5 Minute Drive Time")
+iso_10_layer = FeatureGroup(name="10 Minute Drive Time")
+iso_15_layer = FeatureGroup(name="15 Minute Drive Time")
 boundary_layer = FeatureGroup(name="York Region Boundary")
 
 folium.GeoJson(
@@ -87,15 +89,38 @@ colors = {
 for _, row in isochrones.iterrows():
     c = colors.get(row["minutes"], "gray")
 
-    folium.GeoJson(
-        row.geometry,
-        style_function=lambda x, c=c: {
-            "fillColor": c,
-            "color": c,
-            "weight": 1,
-            "fillOpacity": 0.15
-        }
-    ).add_to(isochrones_layer)
+    if row["minutes"] == 5:
+        folium.GeoJson(
+            row.geometry,
+            style_function=lambda x, c=c: {
+                "fillColor": c,
+                "color": c,
+                "weight": 1,
+                "fillOpacity": 0.15
+            }
+        ).add_to(iso_5_layer)
+
+    elif row["minutes"] == 10:
+        folium.GeoJson(
+            row.geometry,
+            style_function=lambda x, c=c: {
+                "fillColor": c,
+                "color": c,
+                "weight": 1,
+                "fillOpacity": 0.15
+            }
+        ).add_to(iso_10_layer)
+
+    else:
+        folium.GeoJson(
+            row.geometry,
+            style_function=lambda x, c=c: {
+                "fillColor": c,
+                "color": c,
+                "weight": 1,
+                "fillOpacity": 0.15
+            }
+        ).add_to(iso_15_layer)
 
 for _, row in stations.iterrows():
     police_icon = folium.CustomIcon(
@@ -131,7 +156,10 @@ color:black;
 </div>
 """
 boundary_layer.add_to(m)
-isochrones_layer.add_to(m)
+iso_5_layer.add_to(m)
+iso_10_layer.add_to(m)
+iso_15_layer.add_to(m)
+
 stations_layer.add_to(m)
 
 folium.LayerControl().add_to(m)
