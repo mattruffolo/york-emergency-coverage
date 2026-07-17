@@ -55,7 +55,8 @@ c7.metric("Coverage Rate", f"{coverage_rate:.1f}%")
 c8.metric("Police Stations", f"{len(stations)}")
 
 st.info(
-    f"Approximately {pop_gap:,} residents ({pop_gap/total_pop*100:.1f}% of York Region's population) live outside a 15-minute drive of a York Regional Police district station."
+    f"{covered_pop:,} residents ({coverage_rate:.1f}%) live within a 15-minute drive of a York Regional Police district station. "
+    f"In contrast, {pop_gap:,} residents ({pop_gap/total_pop*100:.1f}%) live outside 15-minute coverage."
 )
 st.subheader("Coverage Map")
 
