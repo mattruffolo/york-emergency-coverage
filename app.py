@@ -31,10 +31,14 @@ colors = {5: "green", 10: "orange", 15: "red"}
 
 for _, row in isochrones.iterrows():
     c = colors.get(row["minutes"], "gray")
-    folium.GeoJson(row.geometry, style_function=lambda x, c=c: {"fillColor": c, "color": c, "weight": 1, "fillOpacity": 0.35}).add_to(m)
+    folium.GeoJson(row.geometry, style_function=lambda x, c=c: {"fillColor": c, "color": c, "weight": 1, "fillOpacity": 0.15}).add_to(m)
 
 for _, row in stations.iterrows():
-    folium.Marker([row.geometry.y, row.geometry.x], popup=str(row["NAME"])).add_to(m)
+    folium.Marker([row.geometry.y, row.geometry.x], popup=f"""
+<b>{row['NAME']}</b><br>
+{row['ADDRESS']}<br>
+{row['MUN_NAME']}
+"""
 
 st_folium(m, width=1200, height=500)
 
