@@ -86,7 +86,6 @@ for _, row in filtered_isochrones.iterrows():
             "fillOpacity": 0.15
         }
     ).add_to(m)
-`
 
 for _, row in stations.iterrows():
     folium.Marker(
