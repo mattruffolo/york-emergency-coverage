@@ -48,4 +48,6 @@ chart_data["Label"] = chart_data["minutes"].map({
 10: "10 min",
 15: "15 min",
 999: "Outside Coverage"
+})
+
 st.bar_chart(chart_data.set_index("Label")["Population.sum"])
