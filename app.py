@@ -103,6 +103,7 @@ border: 2px solid grey;
 z-index:9999;
 padding: 10px;
 font-size:14px;
+color:black;
 ">
 <b>Coverage Legend</b><br>
 <span style="color:#2ecc71;">■</span> 5 Minute<br>
