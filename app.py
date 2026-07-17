@@ -9,7 +9,20 @@ st.set_page_config(page_title="York Region Police Coverage", layout="wide")
 stations = gpd.read_file("PoliceStation.geojson").to_crs(epsg=4326)
 isochrones = gpd.read_file("isochrones.geojson").to_crs(epsg=4326)
 summary = pd.read_csv("coverage_summary.csv")
-
+york_boundary = gpd.read_file("YorkRegionBoundary.geojson").to_crs(epsg=4326)
+m = folium.Map(
+    location=[44.05, -79.45],
+    zoom_start=9,
+    tiles="CartoDB positron"
+)
+folium.GeoJson(
+    york_boundary,
+    style_function=lambda x: {
+        "fillOpacity": 0,
+        "color": "black",
+        "weight": 4
+    }
+).add_to(m)
 
 st.title("York Region Police Response Coverage")
 st.markdown("Open-data analysis of drive-time coverage from YRP district stations.")
