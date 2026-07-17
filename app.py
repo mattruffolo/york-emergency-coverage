@@ -59,7 +59,6 @@ for _, row in stations.iterrows():
         prefix="fa"
     )
 )
-    ).add_to(m)
 
 st_folium(m, width=1200, height=500)
 
