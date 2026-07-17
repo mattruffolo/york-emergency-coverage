@@ -150,14 +150,13 @@ font-size:14px;
 color:black;
 ">
 
-<b>Map Legend</b><br><br>
+<b>Legend</b><br><br>
 
+<img src="police-station.png" width="16"> Police Station
 <span style="color:#2ecc71;">■</span> 5 Minute Drive Time<br>
 <span style="color:#f1c40f;">■</span> 10 Minute Drive Time<br>
 <span style="color:#e74c3c;">■</span> 15 Minute Drive Time<br><br>
-
 <span style="color:#777777;">- - -</span> York Region Boundary<br>
-🔵 Police Station
 
 </div>
 """
