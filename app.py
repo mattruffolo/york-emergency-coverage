@@ -61,7 +61,7 @@ st.subheader("Coverage Map")
 m = folium.Map(
     location=[44.05, -79.45],
     zoom_start=9,
-    tiles="CartoDB positron"
+    tiles="Layers"
 )
 Fullscreen().add_to(m)
 
