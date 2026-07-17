@@ -62,7 +62,7 @@ colors = {
     15: "#e74c3c"
 }
 for _, row in isochrones.iterrows():
-  if coverage_filter == "All":
+ if coverage_filter == "All":
     filtered_isochrones = isochrones
 
 elif coverage_filter == "5 Minute":
@@ -71,7 +71,7 @@ elif coverage_filter == "5 Minute":
 elif coverage_filter == "10 Minute":
     filtered_isochrones = isochrones[isochrones["minutes"] == 10]
 
-else:
+elif coverage_filter == "15 Minute":
     filtered_isochrones = isochrones[isochrones["minutes"] == 15]
 
 for _, row in filtered_isochrones.iterrows():
