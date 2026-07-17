@@ -139,9 +139,9 @@ for _, row in stations.iterrows():
 legend_html = """
 <div style="
 position: fixed;
-bottom: 50px;
-left: 50px;
-width: 170px;
+bottom: 30px;
+left: 30px;
+width: 220px;
 background-color: white;
 border: 2px solid grey;
 z-index:9999;
@@ -149,10 +149,16 @@ padding: 10px;
 font-size:14px;
 color:black;
 ">
-<b>Coverage Legend</b><br>
+
+<b>Map Legend</b><br><br>
+
 <span style="color:#2ecc71;">■</span> 5 Minute Drive Time<br>
 <span style="color:#f1c40f;">■</span> 10 Minute Drive Time<br>
-<span style="color:#e74c3c;">■</span> 15 Minute Drive Time
+<span style="color:#e74c3c;">■</span> 15 Minute Drive Time<br><br>
+
+<span style="color:#777777;">- - -</span> York Region Boundary<br>
+🔵 Police Station
+
 </div>
 """
 
