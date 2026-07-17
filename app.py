@@ -13,10 +13,6 @@ summary = pd.read_csv("coverage_summary.csv")
 
 st.title("York Region Police Response Coverage")
 st.markdown("Open-data analysis of drive-time coverage from YRP district stations.")
-coverage_filter = st.sidebar.selectbox(
-    "Coverage Layer",
-    ["All", "5 Minute", "10 Minute", "15 Minute"]
-)
 
 total_pop = int(summary["Population.sum"].sum())
 pop_5 = int(summary.loc[summary["minutes"] == 5, "Population.sum"].values[0])
@@ -62,19 +58,6 @@ colors = {
     15: "#e74c3c"
 }
 for _, row in isochrones.iterrows():
-    c = colors.get(row["minutes"], "gray")
-
-    folium.GeoJson(
-        row.geometry,
-        style_function=lambda x, c=c: {
-            "fillColor": c,
-            "color": c,
-            "weight": 1,
-            "fillOpacity": 0.15
-        }
-    ).add_to(m)
-
-for _, row in filtered_isochrones.iterrows():
     c = colors.get(row["minutes"], "gray")
 
     folium.GeoJson(
