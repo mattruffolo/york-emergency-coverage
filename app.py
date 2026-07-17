@@ -95,7 +95,7 @@ for _, row in isochrones.iterrows():
             "weight": 1,
             "fillOpacity": 0.15
         }
-    ).add_to(m)
+    ).add_to(isochrones_layer)
 
 for _, row in stations.iterrows():
     police_icon = folium.CustomIcon(
@@ -110,7 +110,7 @@ for _, row in stations.iterrows():
             max_width=300
         ),
         icon=police_icon
-    ).add_to(m)
+    ).add_to(stations_layer)
 legend_html = """
 <div style="
 position: fixed;
@@ -130,7 +130,12 @@ color:black;
 <span style="color:#e74c3c;">■</span> 15 Minute Drive Time
 </div>
 """
+boundary_layer.add_to(m)
+isochrones_layer.add_to(m)
+stations_layer.add_to(m)
 
+folium.LayerControl().add_to(m)
+``
 m.get_root().html.add_child(folium.Element(legend_html))
 st_folium(m, width=1200, height=500)
 
