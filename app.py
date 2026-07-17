@@ -141,7 +141,7 @@ legend_html = """
 position: fixed;
 bottom: 30px;
 left: 30px;
-width: 220px;
+width: 260px;
 background-color: white;
 border: 2px solid grey;
 z-index:9999;
