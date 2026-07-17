@@ -35,9 +35,12 @@ for _, row in isochrones.iterrows():
 
 for _, row in stations.iterrows():
     folium.Marker(
-    [row.geometry.y, row.geometry.x], 
-    popup=f"{row['NAME']} - {row['ADDRESS']}"
-    ).add_to(m)
+        [row.geometry.y, row.geometry.x],
+        popup=folium.Popup(
+            f"<b>{row['NAME']}</b><br>{row['ADDRESS']}",
+            max_width=300
+        )
+).add_to(m)
 
 st_folium(m, width=1200, height=500)
 
