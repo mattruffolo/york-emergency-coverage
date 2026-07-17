@@ -21,13 +21,17 @@ pop_15 = int(summary.loc[summary["minutes"] == 15, "Population.sum"].values[0])
 pop_gap = int(summary.loc[summary["minutes"] == 999, "Population.sum"].values[0])
 
 c1, c2, c3, c4 = st.columns(4)
-c1.metric("Within 5 min", f"{pop_5:,}", f"{pop_5/total_pop*100:.1f}%")
-c2.metric("Within 10 min", f"{pop_10:,}", f"{pop_10/total_pop*100:.1f}%")
-c3.metric("Within 15 min", f"{pop_15:,}", f"{pop_15/total_pop*100:.1f}%")
-c4.metric("Outside Coverage", f"{pop_gap:,}", f"{pop_gap/total_pop*100:.1f}%")
-st.info(
-    f"Approximately {pop_gap/total_pop*100:.1f}% of York Region residents "
-    f"({pop_gap:,} people) live outside a 15‑minute drive of a district police station."
+c1.metric("5 Minute Coverage", f"{pop_5:,}")
+c2.metric("10 Minute Coverage", f"{pop_10:,}")
+c3.metric("15 Minute Coverage", f"{pop_15:,}")
+c4.metric("Outside Coverage", f"{pop_gap:,}")
+st.markdown(
+    f"""
+    **5 min:** {pop_5/total_pop*100:.1f}% &nbsp;&nbsp;|&nbsp;&nbsp;
+    **10 min:** {pop_10/total_pop*100:.1f}% &nbsp;&nbsp;|&nbsp;&nbsp;
+    **15 min:** {pop_15/total_pop*100:.1f}% &nbsp;&nbsp;|&nbsp;&nbsp;
+    **Outside:** {pop_gap/total_pop*100:.1f}%
+    """
 )
 
 st.subheader("Coverage Map")
@@ -55,9 +59,7 @@ for _, row in stations.iterrows():
     ),
     icon=folium.Icon(
         color="darkblue",
-        icon="shield",
-        prefix="fa"
-    )
+        icon="info-sign"
 )
 
 st_folium(m, width=1200, height=500)
