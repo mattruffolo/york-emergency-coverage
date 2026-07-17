@@ -34,7 +34,10 @@ for _, row in isochrones.iterrows():
     folium.GeoJson(row.geometry, style_function=lambda x, c=c: {"fillColor": c, "color": c, "weight": 1, "fillOpacity": 0.15}).add_to(m)
 
 for _, row in stations.iterrows():
-    folium.Marker([row.geometry.y, row.geometry.x], popup=f"{row['NAME']} - {row['ADDRESS']}"
+    folium.Marker(
+    [row.geometry.y, row.geometry.x], 
+    popup=f"{row['NAME']} - {row['ADDRESS']}"
+    ).add_to(m)
 
 st_folium(m, width=1200, height=500)
 
