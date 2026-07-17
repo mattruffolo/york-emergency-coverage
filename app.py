@@ -21,7 +21,12 @@ pop_15 = int(summary.loc[summary["minutes"] == 15, "Population.sum"].values[0])
 pop_gap = int(summary.loc[summary["minutes"] == 999, "Population.sum"].values[0])
 
 c1, c2, c3, c4 = st.columns(4)
-c1.metric("5 Minute Coverage", f"{pop_5:,}")
+c1.markdown(f"""
+### 5 Minute Coverage
+**{pop_5:,}**
+<br>
+<span style='color:green'>{pop_5/total_pop*100:.1f}% of population</span>
+""", unsafe_allow_html=True)
 c2.metric("10 Minute Coverage", f"{pop_10:,}")
 c3.metric("15 Minute Coverage", f"{pop_15:,}")
 c4.metric("Outside Coverage", f"{pop_gap:,}")
