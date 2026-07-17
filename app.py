@@ -91,17 +91,18 @@ for _, row in isochrones.iterrows():
     ).add_to(m)
 
 for _, row in stations.iterrows():
-    folium.CircleMarker(
-        location=[row.geometry.y, row.geometry.x],
-        radius=8,
-        color="#0b2e6d",
-        fill=True,
-        fill_color="#0b2e6d",
-        fill_opacity=1,
+    police_icon = folium.CustomIcon(
+        "police_station_icon.png",
+        icon_size=(28, 28)
+    )
+
+    folium.Marker(
+        [row.geometry.y, row.geometry.x],
         popup=folium.Popup(
             f"<b>{row['NAME']}</b><br>{row['ADDRESS']}",
             max_width=300
-        )
+        ),
+        icon=police_icon
     ).add_to(m)
 legend_html = """
 <div style="
