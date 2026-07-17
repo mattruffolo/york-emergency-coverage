@@ -9,7 +9,6 @@ from folium import FeatureGroup
 st.set_page_config(page_title="York Region Police Coverage", layout="wide")
 
 stations = gpd.read_file("PoliceStation.geojson").to_crs(epsg=4326)
-
 isochrones = gpd.read_file("isochrones.geojson").to_crs(epsg=4326)
 summary = pd.read_csv("coverage_summary.csv")
 york_boundary = gpd.read_file("YorkRegionBoundary.json").to_crs(epsg=4326)
@@ -154,10 +153,12 @@ color:black;
 <b>Legend</b><br><br>
 
  ⛊✪ Police Station
+
  
 <span style="color:#2ecc71;">■</span> 5 Minute Drive Time<br>
 <span style="color:#f1c40f;">■</span> 10 Minute Drive Time<br>
 <span style="color:#e74c3c;">■</span> 15 Minute Drive Time<br><br>
+
 <span style="color:#777777;">- - -</span> York Region Boundary<br>
 
 </div>
