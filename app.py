@@ -44,7 +44,17 @@ c4.markdown(f"""
 # {pop_gap:,}
 <span style='color:green'>{pop_gap/total_pop*100:.1f}% of population</span>
 """, unsafe_allow_html=True)
+c5, c6, c7 = st.columns(3)
 
+coverage_rate = ((total_pop - pop_gap) / total_pop) * 100
+
+c5.metric("Total Population", f"{total_pop:,}")
+c6.metric("Coverage Rate", f"{coverage_rate:.1f}%")
+c7.metric("Police Stations", f"{len(stations)}")
+
+st.info(
+    f"Approximately {pop_gap:,} residents ({pop_gap/total_pop*100:.1f}% of York Region's population) live outside a 15-minute drive of a York Regional Police district station."
+)
 st.subheader("Coverage Map")
 m = folium.Map(
     location=[44.05, -79.45],
