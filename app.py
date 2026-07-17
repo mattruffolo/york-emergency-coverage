@@ -4,6 +4,7 @@ import geopandas as gpd
 import folium
 from streamlit_folium import st_folium
 from folium.plugins import Fullscreen
+from folium import FeatureGroup
 
 st.set_page_config(page_title="York Region Police Coverage", layout="wide")
 
@@ -63,6 +64,10 @@ m = folium.Map(
     tiles="CartoDB positron"
 )
 Fullscreen().add_to(m)
+
+stations_layer = FeatureGroup(name="Police Stations")
+isochrones_layer = FeatureGroup(name="Drive Time Isochrones")
+boundary_layer = FeatureGroup(name="York Region Boundary")
 
 folium.GeoJson(
     york_boundary,
