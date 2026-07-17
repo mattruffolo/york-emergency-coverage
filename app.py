@@ -26,12 +26,12 @@ c3.metric("Within 15 min", f"{pop_15:,}")
 c4.metric("Outside Coverage", f"{pop_gap:,}")
 
 st.subheader("Coverage Map")
-m = folium.Map(location=[44.05, -79.45], zoom_start=10, tiles="CartoDB positron")
+m = folium.Map(location=[44.05, -79.45], zoom_start=9, tiles="CartoDB positron")
 colors = {5: "green", 10: "orange", 15: "red"}
 
 for _, row in isochrones.iterrows():
     c = colors.get(row["minutes"], "gray")
-    folium.GeoJson(row.geometry, style_function=lambda x, c=c: {"fillColor": c, "color": c, "weight": 1, "fillOpacity": 0.15}).add_to(m)
+    folium.GeoJson(row.geometry, style_function=lambda x, c=c: {"fillColor": c, "color": c, "weight": 1, "fillOpacity": 0.35}).add_to(m)
 
 for _, row in stations.iterrows():
     folium.Marker([row.geometry.y, row.geometry.x], popup=str(row["NAME"])).add_to(m)
@@ -39,6 +39,13 @@ for _, row in stations.iterrows():
 st_folium(m, width=1200, height=500)
 
 st.subheader("Population by Coverage Bucket")
+
 chart_data = summary.copy()
-chart_data["Label"] = chart_data["minutes"].map({5: "5 min", 10: "10 min", 15: "15 min", 999: "Outside"})
+chart_data["minutes"] = chart_data["minutes"].astype(int)
+
+chart_data["Label"] = chart_data["minutes"].map({
+5: "5 min",
+10: "10 min",
+15: "15 min",
+999: "Outside Coverage"
 st.bar_chart(chart_data.set_index("Label")["Population.sum"])
