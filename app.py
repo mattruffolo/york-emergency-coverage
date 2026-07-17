@@ -135,7 +135,7 @@ isochrones_layer.add_to(m)
 stations_layer.add_to(m)
 
 folium.LayerControl().add_to(m)
-``
+
 m.get_root().html.add_child(folium.Element(legend_html))
 st_folium(m, width=1200, height=500)
 
