@@ -42,7 +42,6 @@ coverage_colors = {
 }
 
 for _, row in da_coverage.iterrows():
-for _, row in da_coverage.iterrows():
     c = coverage_colors.get(row["minutes"], "#cccccc")
 
     folium.GeoJson(
