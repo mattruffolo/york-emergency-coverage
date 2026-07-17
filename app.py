@@ -99,7 +99,7 @@ for _, row in stations.iterrows():
         ),
         icon=folium.Icon(
             color="darkblue",
-            icon="info-sign"
+            icon="building"
         )
     ).add_to(m)
 legend_html = """
@@ -116,9 +116,9 @@ font-size:14px;
 color:black;
 ">
 <b>Coverage Legend</b><br>
-<span style="color:#2ecc71;">■</span> 5 Minute<br>
-<span style="color:#f1c40f;">■</span> 10 Minute<br>
-<span style="color:#e74c3c;">■</span> 15 Minute
+<span style="color:#2ecc71;">■</span> 5 Minute Drive Time<br>
+<span style="color:#f1c40f;">■</span> 10 Minute Drive Time<br>
+<span style="color:#e74c3c;">■</span> 15 Minute Drive Time
 </div>
 """
 
