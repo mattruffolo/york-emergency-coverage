@@ -53,7 +53,11 @@ for _, row in da_coverage.iterrows():
             "fillOpacity": 0.25
         }
     ).add_to(m)
-
+colors = {
+    5: "#2ecc71",
+    10: "#f1c40f",
+    15: "#e74c3c"
+}
 for _, row in isochrones.iterrows():
     c = colors.get(row["minutes"], "gray")
     folium.GeoJson(row.geometry, style_function=lambda x, c=c: {"fillColor": c, "color": c, "weight": 1, "fillOpacity": 0.15}).add_to(m)
@@ -65,7 +69,7 @@ for _, row in stations.iterrows():
             f"<b>{row['NAME']}</b><br>{row['ADDRESS']}",
             max_width=300
         )
-).add_to(m)
+    ).add_to(m)
 
 st_folium(m, width=1200, height=500)
 
