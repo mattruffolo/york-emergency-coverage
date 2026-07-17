@@ -92,7 +92,26 @@ for _, row in stations.iterrows():
             icon="info-sign"
         )
     ).add_to(m)
+legend_html = """
+<div style="
+position: fixed;
+bottom: 50px;
+left: 50px;
+width: 150px;
+background-color: white;
+border: 2px solid grey;
+z-index:9999;
+padding: 10px;
+font-size:14px;
+">
+<b>Coverage Legend</b><br>
+<span style="color:#2ecc71;">■</span> 5 Minute<br>
+<span style="color:#f1c40f;">■</span> 10 Minute<br>
+<span style="color:#e74c3c;">■</span> 15 Minute
+</div>
+"""
 
+m.get_root().html.add_child(folium.Element(legend_html))
 st_folium(m, width=1200, height=500)
 
 st.subheader("Population by Coverage Bucket")
