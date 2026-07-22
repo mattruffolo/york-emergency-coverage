@@ -234,7 +234,5 @@ ranking_display = ranking_display.rename(columns={
 ranking_display["Coverage Rate"] = ranking_display["Coverage Rate"].map(lambda x: f"{x:.1f}%")
 ranking_display["Gap Population"] = ranking_display["Gap Population"].map(lambda x: f"{int(x):,}")
 
-st.dataframe(
-    st.table(ranking_display)
-)
+st.table(ranking_display)
 
