@@ -52,12 +52,7 @@ c5, c6, c7, c8 = st.columns(4)
 coverage_rate = ((total_pop - pop_gap) / total_pop) * 100
 covered_pop = total_pop - pop_gap
 
-c5.markdown(f"""
-<div style="font-size:20px;">
-{total_pop:,}
-</div>
-""", unsafe_allow_html=True)
-
+c5.metric("Total Population", f"{total_pop:,}")
 c6.metric("Covered Population", f"{covered_pop:,}")
 c7.metric("Coverage Rate", f"{coverage_rate:.1f}%")
 c8.metric("Police Stations", f"{len(stations)}")
