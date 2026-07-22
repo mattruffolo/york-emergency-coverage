@@ -49,7 +49,7 @@ c4.markdown(f"""
 """, unsafe_allow_html=True)
 
 st.markdown(
-    "<hr style='margin-top:5px; margin-bottom:15px; border:0.5px solid #D3D3D3;'>",
+    "<hr style='margin-top:5px; margin-bottom:15px; border:0.5px solid #E5E5E5;'>",
     unsafe_allow_html=True
 )
 
