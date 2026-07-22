@@ -53,9 +53,10 @@ coverage_rate = ((total_pop - pop_gap) / total_pop) * 100
 covered_pop = total_pop - pop_gap
 
 c5.markdown(f"""
-##### Total Population
-### {total_pop:,}
-""")
+<div style="font-size:20px;">
+{total_pop:,}
+</div>
+""", unsafe_allow_html=True)
 
 c6.metric("Covered Population", f"{covered_pop:,}")
 c7.metric("Coverage Rate", f"{coverage_rate:.1f}%")
