@@ -13,6 +13,7 @@ isochrones = gpd.read_file("isochrones.geojson").to_crs(epsg=4326)
 summary = pd.read_csv("coverage_summary.csv")
 muni = pd.read_csv("municipality_coverage_summary.csv")
 york_boundary = gpd.read_file("YorkRegionBoundary.json").to_crs(epsg=4326)
+municipal_boundaries = gpd.read_file("muniboundary.json").to_crs(epsg=4326)
 
 st.title("York Region Police Response Coverage")
 st.markdown("Open-data analysis of drive-time coverage from YRP district stations.")
@@ -71,6 +72,21 @@ iso_5_layer = FeatureGroup(name="5 Minute Drive Time")
 iso_10_layer = FeatureGroup(name="10 Minute Drive Time")
 iso_15_layer = FeatureGroup(name="15 Minute Drive Time")
 boundary_layer = FeatureGroup(name="York Region Boundary")
+municipal_layer = FeatureGroup(name="Municipal Boundaries")
+
+folium.GeoJson(
+    municipal_boundaries,
+    style_function=lambda x: {
+        "fillOpacity": 0,
+        "color": "#D0D0D0",
+        "weight": 1,
+        "dashArray": "4,4"
+    },
+    tooltip=folium.GeoJsonTooltip(
+        fields=["CSDNAME"],
+        aliases=["Municipality:"]
+    )
+).add_to(municipal_layer)
 
 folium.GeoJson(
     york_boundary,
@@ -159,6 +175,8 @@ color:black;
 <span style="color:#f1c40f;">■</span> 10 Minute Drive Time<br>
 <span style="color:#e74c3c;">■</span> 15 Minute Drive Time<br><br>
 <span style="color:#777777;">---</span> York Region Boundary
+<br>
+<span style="color:#D0D0D0;">- - -</span> Municipal Boundaries
 
 </div>
 """
@@ -167,6 +185,7 @@ stations_layer.add_to(m)
 iso_5_layer.add_to(m)
 iso_10_layer.add_to(m)
 iso_15_layer.add_to(m)
+municipal_layer.add_to(m)
 boundary_layer.add_to(m)
 
 folium.LayerControl().add_to(m)
