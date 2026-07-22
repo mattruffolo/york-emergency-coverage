@@ -8,11 +8,11 @@ from folium import FeatureGroup
 
 st.set_page_config(page_title="York Region Police Coverage", layout="wide")
 
-stations = gpd.read_file("PoliceStation.geojson").to_crs(epsg=4326)
+stations = gpd.read_file("police_station.geojson").to_crs(epsg=4326)
 isochrones = gpd.read_file("isochrones.geojson").to_crs(epsg=4326)
 summary = pd.read_csv("coverage_summary.csv")
 muni = pd.read_csv("municipality_coverage_summary.csv")
-municipal_boundaries = gpd.read_file("muniboundary.json").to_crs(epsg=4326)
+municipal_boundaries = gpd.read_file("municipal_boundary.json").to_crs(epsg=4326)
 
 st.title("York Region Police Response Coverage")
 st.markdown("Open-data analysis of drive-time coverage from YRP district stations.")
