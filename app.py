@@ -78,13 +78,14 @@ folium.GeoJson(
     municipal_boundaries,
     style_function=lambda x: {
         "fillOpacity": 0,
-        "color": "#8C8C8C",
+        "color": "#707070",
         "weight": 1.5,
         "dashArray": "2,6"
     },
     tooltip=folium.GeoJsonTooltip(
         fields=["CSDNAME"],
-        aliases=["Municipality:"]
+        aliases=["Municipality:"],
+        localize=True
     )
 ).add_to(municipal_layer)
 
