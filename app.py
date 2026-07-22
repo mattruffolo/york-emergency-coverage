@@ -76,7 +76,7 @@ folium.GeoJson(
     municipal_boundaries,
     style_function=lambda x: {
         "fillOpacity": 0,
-        "color": "#707070",
+        "color": "##555555",
         "weight": 1.5,
         "dashArray": "2,6"
     },
@@ -235,8 +235,6 @@ ranking_display["Coverage Rate"] = ranking_display["Coverage Rate"].map(lambda x
 ranking_display["Gap Population"] = ranking_display["Gap Population"].map(lambda x: f"{int(x):,}")
 
 st.dataframe(
-    ranking_display,
-    hide_index=True,
-    use_container_width=True
+    st.table(ranking_display)
 )
 
