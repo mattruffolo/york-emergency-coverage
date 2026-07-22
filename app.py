@@ -76,7 +76,7 @@ folium.GeoJson(
     municipal_boundaries,
     style_function=lambda x: {
         "fillOpacity": 0,
-        "color": "##555555",
+        "color": "#555555",
         "weight": 1.5,
         "dashArray": "2,6"
     },
