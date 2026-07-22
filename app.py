@@ -237,14 +237,3 @@ st.dataframe(
     use_container_width=True
 )
 
-chart_data = summary.copy()
-chart_data["minutes"] = chart_data["minutes"].astype(int)
-
-chart_data["Label"] = chart_data["minutes"].map({
-5: "5 min",
-10: "10 min",
-15: "15 min",
-999: "Beyond 15 Minutes"
-})
-
-st.bar_chart(chart_data.set_index("Label")["Population.sum"])
