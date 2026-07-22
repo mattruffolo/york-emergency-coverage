@@ -84,8 +84,6 @@ folium.GeoJson(
     },
     tooltip=folium.GeoJsonTooltip(
         fields=["CSDNAME"],
-        aliases=["Municipality:"],
-        localize=True
     )
 ).add_to(municipal_layer)
 
