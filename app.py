@@ -86,6 +86,7 @@ tooltip=folium.GeoJsonTooltip(
     fields=["CSDNAME"],
     labels=False
 )
+``    
 
 folium.GeoJson(
     york_boundary,
