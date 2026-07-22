@@ -82,20 +82,21 @@ folium.GeoJson(
         "weight": 1.5,
         "dashArray": "2,6"
     },
-tooltip=folium.GeoJsonTooltip(
-    fields=["CSDNAME"],
-    labels=False
-)
-``    
-
+    tooltip=folium.GeoJsonTooltip(
+        fields=["CSDNAME"],
+        labels=False
+    )
+).add_to(municipal_layer)
+ 
 folium.GeoJson(
     york_boundary,
     style_function=lambda x: {
         "fillOpacity": 0,
-        "color": "#777777",
+        "color": "#555555",
         "weight": 2,
         "dashArray": "8,8"
-    }
+    },
+    control=False
 ).add_to(boundary_layer)
 
 colors = {
