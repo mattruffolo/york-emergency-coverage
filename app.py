@@ -224,15 +224,16 @@ ranking_display = ranking[[
     "CSDNAME",
     "Coverage Rate",
     "Coverage Score",
-    "Population Beyond 15 Minutes"
+    "Gap Population"
 ]]
 
 ranking_display = ranking_display.rename(columns={
-    "CSDNAME": "Municipality"
+    "CSDNAME": "Municipality",
+    "Gap Population": "Population Beyond 15 Minutes"
 })
 
 ranking_display["Coverage Rate"] = ranking_display["Coverage Rate"].map(lambda x: f"{x:.1f}%")
-ranking_display["Population Beyond 15 Minutes"] = ranking_display["Population Beyond 15 Minutes"].map(lambda x: f"{int(x):,}")
+ranking_display["Gap Population"] = ranking_display["Gap Population"].map(lambda x: f"{int(x):,}")
 
 st.table(ranking_display)
 
