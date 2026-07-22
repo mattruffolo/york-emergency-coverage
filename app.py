@@ -177,7 +177,9 @@ color:black;
 <span style="white-space: nowrap;">
 <span style="color:#8C8C8C;">- - -</span> Municipal Boundaries<br>
 <span style="color:#777777;">- - -</span> York Region Boundary
-``
+
+</div>
+"""
 
 stations_layer.add_to(m)
 iso_5_layer.add_to(m)
