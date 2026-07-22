@@ -11,6 +11,7 @@ st.set_page_config(page_title="York Region Police Coverage", layout="wide")
 stations = gpd.read_file("PoliceStation.geojson").to_crs(epsg=4326)
 isochrones = gpd.read_file("isochrones.geojson").to_crs(epsg=4326)
 summary = pd.read_csv("coverage_summary.csv")
+muni = pd.read_csv("municipality_coverage_summary.csv")
 york_boundary = gpd.read_file("YorkRegionBoundary.json").to_crs(epsg=4326)
 
 st.title("York Region Police Response Coverage")
@@ -176,6 +177,64 @@ st_folium(m, width=1200, height=500)
 st.info(
     f"{covered_pop:,} residents ({coverage_rate:.1f}%) live within a 15-minute drive of a York Regional Police district station. "
     f"In contrast, {pop_gap:,} residents ({pop_gap/total_pop*100:.1f}%) live beyond 15 minutes."
+)
+st.subheader("Municipality Coverage Ranking")
+st.caption("Municipalities ranked by share of residents within 15-minute drive-time coverage.")
+
+muni["minutes"] = muni["minutes"].astype(int)
+muni = muni[muni["CSDNAME"].notna()]
+muni = muni[muni["CSDNAME"] != ""]
+
+total_by_muni = muni.groupby("CSDNAME")["Population.sum"].sum().reset_index()
+total_by_muni = total_by_muni.rename(columns={"Population.sum": "Total Population"})
+
+gap_by_muni = muni[muni["minutes"] == 999].groupby("CSDNAME")["Population.sum"].sum().reset_index()
+gap_by_muni = gap_by_muni.rename(columns={"Population.sum": "Gap Population"})
+
+ranking = total_by_muni.merge(gap_by_muni, on="CSDNAME", how="left")
+ranking["Gap Population"] = ranking["Gap Population"].fillna(0)
+
+ranking["Covered Population"] = ranking["Total Population"] - ranking["Gap Population"]
+ranking["Coverage Rate"] = ranking["Covered Population"] / ranking["Total Population"] * 100
+
+def get_score(rate):
+    if rate >= 98:
+        return "A+"
+    elif rate >= 95:
+        return "A"
+    elif rate >= 90:
+        return "A-"
+    elif rate >= 85:
+        return "B"
+    elif rate >= 80:
+        return "C"
+    else:
+        return "D"
+
+ranking["Coverage Score"] = ranking["Coverage Rate"].apply(get_score)
+
+ranking = ranking.sort_values("Coverage Rate", ascending=False).reset_index(drop=True)
+ranking["Rank"] = ranking.index + 1
+
+ranking_display = ranking[[
+    "Rank",
+    "CSDNAME",
+    "Coverage Rate",
+    "Coverage Score",
+    "Gap Population"
+]]
+
+ranking_display = ranking_display.rename(columns={
+    "CSDNAME": "Municipality"
+})
+
+ranking_display["Coverage Rate"] = ranking_display["Coverage Rate"].map(lambda x: f"{x:.1f}%")
+ranking_display["Gap Population"] = ranking_display["Gap Population"].map(lambda x: f"{int(x):,}")
+
+st.dataframe(
+    ranking_display,
+    hide_index=True,
+    use_container_width=True
 )
 
 chart_data = summary.copy()
