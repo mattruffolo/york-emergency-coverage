@@ -47,6 +47,12 @@ c4.markdown(f"""
 # {pop_gap:,}
 <span style='color:green'>{pop_gap/total_pop*100:.1f}% of population</span>
 """, unsafe_allow_html=True)
+
+st.markdown(
+    "<hr style='margin-top:5px; margin-bottom:15px; border:0.5px solid #D3D3D3;'>",
+    unsafe_allow_html=True
+)
+
 c5, c6, c7, c8 = st.columns(4)
 
 coverage_rate = ((total_pop - pop_gap) / total_pop) * 100
