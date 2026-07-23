@@ -91,6 +91,19 @@ m = folium.Map(
     zoom_start=9,
     tiles="CartoDB positron"
 )
+m.get_root().header.add_child(folium.Element("""
+<style>
+    svg, svg * {
+        outline: none !important;
+    }
+    .leaflet-interactive:focus,
+    .leaflet-interactive:focus-visible,
+    .leaflet-interactive:active {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+</style>
+"""))
 Fullscreen().add_to(m)
 
 stations_layer = FeatureGroup(name="Police Stations")
