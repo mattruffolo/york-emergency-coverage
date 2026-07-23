@@ -9,22 +9,23 @@ from folium import FeatureGroup
 st.set_page_config(page_title="York Region Police Coverage", layout="wide")
 st.markdown("""
 <style>
-    /* Kill the click focus outline on any Leaflet SVG element */
-    svg, svg * {
-        outline: none !important;
+    /* Hide anchor link icons beside every header */
+    [data-testid="stMarkdownContainer"] a[href^="#"] {
+        display: none !important;
     }
-    .leaflet-container path {
-        outline: none !important;
+    h1 > a,
+    h2 > a,
+    h3 > a,
+    h4 > a,
+    h5 > a,
+    h6 > a {
+        display: none !important;
     }
-    .leaflet-interactive {
-        outline: none !important;
-        -webkit-tap-highlight-color: transparent !important;
-    }
-    .leaflet-interactive:focus,
-    .leaflet-interactive:focus-visible,
-    .leaflet-interactive:active {
-        outline: none !important;
-        box-shadow: none !important;
+    .stMarkdown a.anchor-link,
+    .stMarkdown svg.anchor-icon,
+    a.stAnchor {
+        display: none !important;
+        visibility: hidden !important;
     }
 </style>
 """, unsafe_allow_html=True)
