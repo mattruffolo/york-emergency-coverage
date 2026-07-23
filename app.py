@@ -208,7 +208,6 @@ color:black;
 <span style="color:#2ecc71;">■</span> 5 Minute Drive Time<br>
 <span style="color:#f1c40f;">■</span> 10 Minute Drive Time<br>
 <span style="color:#e74c3c;">■</span> 15 Minute Drive Time<br><br>
-<span style="white-space: nowrap;">
 <span style="color:#8C8C8C;">- - -</span> Municipal Boundaries<br>
 </div>
 """
