@@ -92,13 +92,19 @@ folium.GeoJson(
     style_function=lambda x: {
         "fillOpacity": 0,
         "color": "#555555",
-        "weight": 1.5,
+        "weight": 2,
         "dashArray": "2,6"
     },
     tooltip=folium.GeoJsonTooltip(
         fields=["CSDNAME"],
         labels=False
-    )
+    ),
+    highlight_function=lambda x: {
+        "weight": 2,
+        "color": "#555555",
+        "fillOpacity": 0
+    },
+    control=False
 ).add_to(municipal_layer)
 
 colors = {
