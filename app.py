@@ -9,13 +9,22 @@ from folium import FeatureGroup
 st.set_page_config(page_title="York Region Police Coverage", layout="wide")
 st.markdown("""
 <style>
-    /* Remove the Leaflet click outline on GeoJSON features */
-    .leaflet-interactive:focus {
+    /* Kill the click focus outline on any Leaflet SVG element */
+    svg, svg * {
+        outline: none !important;
+    }
+    .leaflet-container path {
+        outline: none !important;
+    }
+    .leaflet-interactive {
+        outline: none !important;
+        -webkit-tap-highlight-color: transparent !important;
+    }
+    .leaflet-interactive:focus,
+    .leaflet-interactive:focus-visible,
+    .leaflet-interactive:active {
         outline: none !important;
         box-shadow: none !important;
-    }
-    path.leaflet-interactive {
-        outline: none !important;
     }
 </style>
 """, unsafe_allow_html=True)
