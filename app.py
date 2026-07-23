@@ -204,7 +204,7 @@ color:black;
 
 <b>Legend</b><br><br>
 
-<span style="font-size:16px;">⛊✪</span> Police Station<br>
+<span style="font-size:16px;">✪</span> Police Station<br>
 
 <span style="color:#2ecc71;">■</span> 5 Minute Drive Time<br>
 <span style="color:#f1c40f;">■</span> 10 Minute Drive Time<br>
