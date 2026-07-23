@@ -7,6 +7,15 @@ from folium.plugins import Fullscreen
 from folium import FeatureGroup
 
 st.set_page_config(page_title="York Region Police Coverage", layout="wide")
+st.markdown("""
+<style>
+    /* Hide the anchor link icons beside headers */
+    [data-testid="stMarkdownContainer"] a.anchor-link,
+    h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+        display: none !important;
+    }
+</style>
+""", unsafe_allow_html=True)
 
 stations = gpd.read_file("police_station.geojson").to_crs(epsg=4326)
 isochrones = gpd.read_file("isochrones.geojson").to_crs(epsg=4326)
