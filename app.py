@@ -9,10 +9,13 @@ from folium import FeatureGroup
 st.set_page_config(page_title="York Region Police Coverage", layout="wide")
 st.markdown("""
 <style>
-    /* Hide the anchor link icons beside headers */
-    [data-testid="stMarkdownContainer"] a.anchor-link,
-    h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
-        display: none !important;
+    /* Remove the Leaflet click outline on GeoJSON features */
+    .leaflet-interactive:focus {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+    path.leaflet-interactive {
+        outline: none !important;
     }
 </style>
 """, unsafe_allow_html=True)
