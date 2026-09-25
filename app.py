@@ -93,17 +93,10 @@ m = folium.Map(
     tiles=None
 )
 
-# Light grey basemap (default)
 folium.TileLayer(
-    tiles="CartoDB Positron",
-    name="Light Grey",
-    control=False
-).add_to(m)
-
-# Alternate basemap
-folium.TileLayer(
-    tiles="OpenStreetMap",
-    name="OpenStreetMap"
+    tiles="https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",
+    attr="Esri",
+    name="Light Gray Canvas"
 ).add_to(m)
 
 folium.LayerControl().add_to(m)
