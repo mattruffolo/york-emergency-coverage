@@ -90,7 +90,7 @@ st.subheader("Coverage Map")
 m = folium.Map(
     location=[44.05, -79.45],
     zoom_start=9,
-    tiles="CartoDB positron"
+    tiles="OpenStreetMap"
 )
 m.get_root().header.add_child(folium.Element("""
 <style>
