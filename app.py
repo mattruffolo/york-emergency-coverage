@@ -88,9 +88,25 @@ c8.metric("Police Stations", f"{len(stations)}")
 st.subheader("Coverage Map")
 
 m = folium.Map(
-    location=[44.05, -79.45],
-    zoom_start=9,
-    tiles="OpenStreetMap"
+    location=[43.8, -79.4],
+    zoom_start=10,
+    tiles=None
+)
+
+# Light grey basemap (default)
+folium.TileLayer(
+    tiles="CartoDB Positron",
+    name="Light Grey",
+    control=False
+).add_to(m)
+
+# Alternate basemap
+folium.TileLayer(
+    tiles="OpenStreetMap",
+    name="OpenStreetMap"
+).add_to(m)
+
+folium.LayerControl().add_to(m)
 )
 m.get_root().header.add_child(folium.Element("""
 <style>
