@@ -88,7 +88,7 @@ c8.metric("Police Stations", f"{len(stations)}")
 st.subheader("Coverage Map")
 
 m = folium.Map(
-    location=[43.8, -79.4],
+    location=[44.0, -79.45],
     zoom_start=10,
     tiles="OpenStreetMap"
 )
@@ -134,8 +134,8 @@ folium.GeoJson(
 ).add_to(municipal_layer)
 
 colors = {
-    5: "#2ecc71",
-    10: "#f1c40f",
+    5: "#009E73",
+    10: "#E69F00",
     15: "#e74c3c"
 }
 for _, row in isochrones.iterrows():
