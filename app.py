@@ -90,16 +90,7 @@ st.subheader("Coverage Map")
 m = folium.Map(
     location=[43.8, -79.4],
     zoom_start=10,
-    tiles=None
-)
-
-folium.TileLayer(
-    tiles="https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",
-    attr="Esri",
-    name="Light Gray Canvas"
-).add_to(m)
-
-folium.LayerControl().add_to(m)
+    tiles="OpenStreetMap"
 )
 m.get_root().header.add_child(folium.Element("""
 <style>
